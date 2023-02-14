@@ -1,8 +1,14 @@
 import { expect, it } from "vitest";
 
-export const getName = (params: { first: string; last: string }) => {
+type Props = { 
+  first: string
+  last?: string
+}
+
+export const getName = (params: Props) => {
+  // por ser opcional, precisa ser validado pra não acusar erro
   if (params.last) {
-    return `${params.first} ${params.last}`;
+    return `${params.first} ${params?.last}`;
   }
   return params.first;
 };
